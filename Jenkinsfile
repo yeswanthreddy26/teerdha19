@@ -2,22 +2,15 @@ pipeline{
     agent any
     stages {
 
-        stage('rds'){
+        stage('prod'){
 
       steps  {
             sh '''
-            chmod +x rds.tf
-            ./rds.tf
-            '''}
-        }
-        stage('prod'){
-            steps {
-                sh '''
-                chmod +x prod.tf
-                ./prod.tf
-                '''
-            }
-        }
+            chmod +x prod.tf
+            ./prod.tf
+            '''
+         }
+      }  
         stage('dev'){
             steps {
                 sh '''
@@ -25,12 +18,14 @@ pipeline{
                 ./dev.tf
                 '''
             }
-        } 
-        stage('dev'){
+        }
+        stage('test'){
             steps {
                 sh '''
                 chmod +x test.tf
                 ./test.tf
                 '''
+            }
+        }  
     }
 }
