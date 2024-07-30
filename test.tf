@@ -60,7 +60,7 @@ provisioner "remote-exec" {
         "sudo apt install python3-virtualenv -y",
         "python3 -m venv /home/ubuntu/eminem",
         ". /home/ubuntu/eminem/bin/activate",
-        "git clone https://github.com/Praveenchinna14/teerdha20.git",
+        "git clone https://github.com/Praveenchinna14/teerdha19.git",
         "cd teerdha20",
         "sudo apt install libmysqlclient-dev -y",
         "sudo apt install pkg-config -y",
