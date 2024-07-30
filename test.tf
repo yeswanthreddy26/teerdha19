@@ -1,3 +1,47 @@
+provider "aws" {
+  region = "us-east-2"
+}
+
+resource "aws_security_group" "rds_sg" {
+  name = "rds_sg"
+  # Define ingress and egress rules for RDS
+   # ssh for terraform remote exec
+  ingress {
+    description = "Allow remote SSH from anywhere"
+    cidr_blocks = ["0.0.0.0/0"]
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+  }
+
+  # enable http
+  ingress {
+    description = "Allow HTTP request from anywhere"
+    cidr_blocks = ["0.0.0.0/0"]
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+  }
+
+  # enable http
+  ingress {
+    description = "Allow HTTP request from anywhere"
+    cidr_blocks = ["0.0.0.0/0"]
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+  }
+
+  # enable http
+  ingress {
+    description = "Allow HTTP request from anywhere"
+    cidr_blocks = ["0.0.0.0/0"]
+    from_port   = 8000
+    to_port     = 8000
+    protocol    = "tcp"
+  }
+
+}
 resource "aws_instance" "test" {
   ami = "ami-0862be96e41dcbf74"
   instance_type = "t2.medium"
