@@ -23,10 +23,12 @@ pipeline {
 
         stage('Terraform Init') {
                     steps {
+                       withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-cred']]){
                             file('dev.tf') {
                             sh 'echo "=================Terraform Init=================="'
                             sh 'terraform init'
                         }
+                    }
                 }
         }
 
@@ -34,6 +36,7 @@ pipeline {
             steps {
                 script {
                     if (params.PLAN_TERRAFORM) {
+                       withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-cred']]){
                             file('dev.tf') {
                                 sh 'echo "=================Terraform Plan=================="'
                                 sh 'terraform plan'
@@ -42,11 +45,13 @@ pipeline {
                     }
                 }
             }
+        }
 
         stage('Terraform Apply') {
             steps {
                 script {
                     if (params.APPLY_TERRAFORM) {
+                       withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-cred']]){
                             file('dev.tf') {
                                 sh 'echo "=================Terraform Apply=================="'
                                 sh 'terraform apply -auto-approve'
@@ -55,11 +60,13 @@ pipeline {
                     }
                 }
             }
+        }
 
         stage('Terraform Destroy') {
             steps {
                 script {
                     if (params.DESTROY_TERRAFORM) {
+                       withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-cred']]){
                             file('dev.tf') {
                                 sh 'echo "=================Terraform Destroy=================="'
                                 sh 'terraform destroy -auto-approve'
@@ -70,3 +77,4 @@ pipeline {
             }
         }
     }
+}
