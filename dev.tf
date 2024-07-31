@@ -1,8 +1,9 @@
 provider "aws" {
+  alias = "dev"
   region = "us-east-2"
 }
 
-resource "aws_security_group" "rds_sg" {
+resource "aws_security_group" "dev_sg" {
   name = "rds_sg"
   # Define ingress and egress rules for RDS
    # ssh for terraform remote exec
