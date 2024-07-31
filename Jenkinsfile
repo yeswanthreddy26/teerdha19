@@ -49,7 +49,6 @@ pipeline {
                     }
                 }
             }
-        }
 
         stage('Terraform Apply') {
             steps {
