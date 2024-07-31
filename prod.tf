@@ -43,6 +43,7 @@ resource "aws_security_group" "rds_sg" {
 
 }
 resource "aws_instance" "name" {
+  alias = "prod"
   ami = "ami-0862be96e41dcbf74"
   instance_type = "t2.medium"
   key_name = "praveen"
