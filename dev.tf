@@ -44,8 +44,7 @@ resource "aws_security_group" "dev_sg" {
 
 }
 
-resource "aws_instance" "kumar" {
-  alias = "dev"
+resource "aws_instance" "name" {
   ami = "ami-0862be96e41dcbf74"
   instance_type = "t2.medium"
   key_name = "praveen"
