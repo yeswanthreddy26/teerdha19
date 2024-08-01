@@ -15,7 +15,7 @@ pipeline{
       steps  {
             sh '''
             terraform init
-            terraform apply -var-file=dev.tfvars -auto-approve
+            terraform apply dev.tf -auto-approve
             '''
             }
         }
