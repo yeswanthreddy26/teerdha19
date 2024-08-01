@@ -19,7 +19,7 @@ pipeline{
             sh '''
             terraform init
             terraform plan
-            terraform apply dev.tf -auto-approve
+            terraform apply dev.tf 
             '''
             }
         }
