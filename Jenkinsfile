@@ -14,7 +14,6 @@ pipeline{
 
       steps  {
             sh '''
-            dev.tf
             terraform init
             terraform plan
             terraform apply dev.tf -auto-approve
