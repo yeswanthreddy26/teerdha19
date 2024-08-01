@@ -18,8 +18,8 @@ pipeline{
       steps  {
             sh '''
             terraform init
-            terraform plan
-            terraform apply dev.tf -m
+            terraform plan -out=dev.tfplan
+            terraform apply dev.tfplan
             '''
             }
         }
