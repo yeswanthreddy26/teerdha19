@@ -19,7 +19,7 @@ pipeline{
             sh '''
             terraform init
             terraform plan
-            terraform apply dev.tf 
+            terraform apply dev.tf -m
             '''
             }
         }
